@@ -1,0 +1,9 @@
+@if (nodes?.length) {
+  <div>
+    @for (node of nodes; track node) {
+      <div class="ngx-org-self-{{direction}}">
+        <ngx-chart-designer [node]="node" [direction]="direction" (itemClick)="itemClick.emit($event)"></ngx-chart-designer>
+      </div>
+    }
+  </div>
+}

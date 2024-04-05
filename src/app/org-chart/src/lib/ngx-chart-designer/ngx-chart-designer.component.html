@@ -1,0 +1,20 @@
+@if (node) {
+  <ngx-chart-node ngClass="ngx-org-{{direction}}" [node]="node" [hasParent]="hasParent"
+    [direction]="direction" (itemClick)="itemClick.emit($event)">
+  </ngx-chart-node>
+}
+@if (node?.childs?.length) {
+  <div ngClass="ngx-org-reports-{{direction}}" class="ngx-org-reports">
+    @for (childNode of node?.childs; track childNode; let isFirst = $first; let isLast = $last) {
+      <div ngClass="ngx-org-org-container-{{direction}}" class="ngx-org-org-container">
+        <div ngClass="ngx-org-connector-container-{{direction}}" class="ngx-org-connector-container">
+          <div class="ngx-org-connector ngx-org-border" [style.border-color]="isFirst?'transparent':''"></div>
+          <div class="ngx-org-border"></div>
+          <div class="ngx-org-connector ngx-org-border" [style.border-color]="isLast?'transparent':''"></div>
+        </div>
+        <ngx-chart-designer [node]="childNode" [hasParent]="true" [direction]="direction" (itemClick)="itemClick.emit($event)">
+        </ngx-chart-designer>
+      </div>
+    }
+  </div>
+}

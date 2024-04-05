@@ -1,0 +1,17 @@
+@if (hasParent) {
+  <div ngClass="ngx-org-connector-{{direction}}" class="ngx-org-border"></div>
+}
+<div [ngClass]="node?.cssClass" class="ngx-org-box ngx-org-border ngx-org-background" (click)="itemClick.emit(node)">
+  @if (node?.image) {
+    <div class="ngx-org-image ngx-org-border"
+      [ngStyle]="{ 'background-image': 'url(\''+ node?.image+'\')'}">
+    </div>
+  }
+  <div>
+    <div class="ngx-org-name">{{node?.name}}</div>
+    <div class="ngx-org-title">{{node?.title}}</div>
+  </div>
+</div>
+@if (node?.childs?.length) {
+  <div ngClass="ngx-org-connector-{{direction}}" class="ngx-org-border"></div>
+}
